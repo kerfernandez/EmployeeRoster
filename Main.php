@@ -1,4 +1,9 @@
 <?php
+require_once 'EmployeeRoster.php';
+require_once 'CommissionEmployee.php';
+require_once 'HourlyEmployee.php';
+require_once 'PieceWorker.php';
+
 class Main {
 
 private EmployeeRoster $roster;
@@ -16,9 +21,9 @@ public function start() {
         $this->start();
     }
 
-    // Initialize the EmployeeRoster
+    
     $this->roster = new EmployeeRoster($this->size);
-    $this->entrance(); 
+    $this->entrance();
 }
 
 public function entrance() {
@@ -39,7 +44,7 @@ public function entrance() {
                 $this->otherMenu();
                 break;
             case 0:
-                $this->repeat = false; 
+                $this->repeat = false;
                 break;
             default:
                 echo "Invalid input. Please try again.\n";
@@ -138,7 +143,7 @@ public function otherMenu() {
 
     switch ($choice) {
         case 1:
-            $this->roster->display();
+            $this->roster->display(); 
             break;
         case 2:
             echo "Total Employees: " . $this->roster->count() . "\n";
@@ -161,7 +166,7 @@ public function otherMenu() {
 }
 
 public function clear() {
-    system('cls'); 
+    system('cls');
 }
 
 public function repeat() {
