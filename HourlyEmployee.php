@@ -1,40 +1,28 @@
 <?php
 
-require_once 'Employee.php';
+class HourlyEmployee {
+    private string $name;
+    private string $address;
+    private int $age;
+    private string $companyName;
+    private float $hoursWorked;
+    private float $hourlyRate;
 
-class HourlyEmployee extends Employee {
-    public function __construct(
-        string $name, 
-        string $address, 
-        int $age, 
-        string $companyName, 
-        private int $hoursWorked, 
-        private float $rate
-    ) {
-        parent::__construct($name, $address, $age, $companyName);
+    public function __construct($name, $address, $age, $companyName, $hoursWorked, $hourlyRate) {
+        $this->name = $name;
+        $this->address = $address;
+        $this->age = $age;
+        $this->companyName = $companyName;
+        $this->hoursWorked = $hoursWorked;
+        $this->hourlyRate = $hourlyRate;
     }
 
-    public function getHoursWorked(): int {
-        return $this->hoursWorked;
+    public function getName() {
+        return $this->name;
     }
 
-    public function getRate(): float {
-        return $this->rate;
-    }
-
-    public function earnings(): float {
-        $overtimeHours = max(0, $this->hoursWorked - 40);
-        $regularHours = min(40, $this->hoursWorked);
-        return ($regularHours * $this->rate) + ($overtimeHours * $this->rate * 1.5);
-    }
-
-    public function __toString(): string {
-        return sprintf(
-            "%s, Hours Worked: %d, Rate: %.2f", 
-            parent::__toString(), 
-            $this->hoursWorked, 
-            $this->rate
-        );
+    public function calculatePay() {
+        return $this->hoursWorked * $this->hourlyRate;
     }
 }
 ?>
