@@ -1,4 +1,3 @@
-Main.php
 <?php
 class Main {
 
@@ -17,9 +16,9 @@ public function start() {
         $this->start();
     }
 
-    // Initialize the EmployeeRoster
+    
     $this->roster = new EmployeeRoster($this->size);
-    $this->entrance(); // Start the menu entrance
+    $this->entrance(); 
 }
 
 public function entrance() {
